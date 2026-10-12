@@ -38,7 +38,7 @@
 
 这部分可以看 [图解 Transformer](https://jalammar.github.io/illustrated-transformer/)，先理解注意力机制、模型结构和生成过程，再逐步补训练与对齐的基础
 
-**Token 和上下文窗口，决定了模型这一轮能看到多少信息**
+#### Token 和上下文窗口，决定了模型这一轮能看到多少信息
 
 要理解 Tokenization，也就是文本怎样切分成 Token，再分清输入 Token、输出 Token、Context Window、最大输入长度和最大输出长度，也要知道 Token 与汉字、单词之间没有固定的一一对应关系
 
@@ -52,7 +52,7 @@
 
 可以看 [Token 与计数文档](https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them)，学习文本怎样切成 Token，以及输入、输出和上下文限制之间的关系
 
-**采样参数，需要知道作用和适用边界**
+#### 采样参数，需要知道作用和适用边界
 
 Temperature、Top-p、Top-k、Frequency Penalty、Presence Penalty、Seed、Stop Sequences，原文都列了出来
 
@@ -82,7 +82,7 @@ Embedding 用来把内容表示成向量，Rerank 用来给候选内容重新排
 
 实际创建请求时，还可以单独看 [Responses Create 接口](https://platform.openai.com/docs/api-reference/responses/create)，逐项核对请求参数和返回结构
 
-**流式输出，需要处理完整的事件过程**
+#### 流式输出，需要处理完整的事件过程
 
 理解 SSE、event stream、delta 和增量文本，也要处理工具参数逐步到达、连接中断、用户取消和响应未完成的情况
 
@@ -92,7 +92,7 @@ Embedding 用来把内容表示成向量，Rerank 用来给候选内容重新排
 
 需要查具体事件类型时，可以看 [Responses Streaming 事件参考](https://platform.openai.com/docs/api-reference/responses-streaming)
 
-**结构化输出，要让程序能稳定接住结果**
+#### 结构化输出，要让程序能稳定接住结果
 
 JSON Mode 主要解决 JSON 格式问题，按 Schema 约束的 Structured Outputs 进一步限定字段、类型和结构
 
@@ -102,7 +102,7 @@ JSON Mode 主要解决 JSON 格式问题，按 Schema 约束的 Structured Outpu
 
 材料还附了 [Structured Outputs 的介绍文章](https://openai.com/index/introducing-structured-outputs-in-the-api/)，可以用来理解这项能力最初要解决什么问题，具体使用以当前文档为准
 
-**工具调用，要弄明白模型和业务系统各自做什么**
+#### 工具调用，要弄明白模型和业务系统各自做什么
 
 Function Calling 则要把模型请求调用工具和工具真正执行区分开
 
@@ -112,7 +112,7 @@ tool_call_id、参数、tool result 和错误返回都需要正确对应，否�
 
 可以看 [OpenAI Function Calling](https://developers.openai.com/api/docs/guides/function-calling) 和 [Claude Tool Use](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview)，跟着文档走完工具定义、调用请求、实际执行和结果返回的完整过程
 
-**多轮会话，要知道历史信息怎样传进下一轮**
+#### 多轮会话，要知道历史信息怎样传进下一轮
 
 会话连续性需要由系统管理，既可以自己维护历史，也可以使用供应商提供的状态管理接口，采用哪种方式都要搞清楚实际传入了哪些信息
 
@@ -122,7 +122,7 @@ tool_call_id、参数、tool result 和错误返回都需要正确对应，否�
 
 材料还附了 [Claude 对话中途的系统消息与工具变更](https://platform.claude.com/docs/en/build-with-claude/mid-conversation-system-messages)，可以进一步学习会话过程中指令与工具怎样变化，具体支持条件要对照文档
 
-**Embedding，先理解文本怎样变成向量**
+#### Embedding，先理解文本怎样变成向量
 
 这一块要了解文本向量、语义相似度、向量维度、归一化、Cosine / Dot Product / L2、Embedding 模型选型、批量生成与向量缓存，后面做 RAG 时还会用到
 
@@ -188,7 +188,7 @@ README 里说明用了哪些结构，为什么这样设置 System Prompt 和约�
 
 学习时顺着完整链路走：文档加载与解析、分块、Embedding、索引、召回、重排、上下文组织、回答生成、引用溯源和效果评估
 
-**解析和分块，会直接影响后面的检索**
+#### 解析和分块，会直接影响后面的检索
 
 PDF、Word、HTML、Markdown、代码、表格、图片 OCR 和多模态文档解析，都在这一块的学习范围里，不能默认按同一种方式处理
 
@@ -202,7 +202,7 @@ PDF、Word、HTML、Markdown、代码、表格、图片 OCR 和多模态文档�
 
 分块可以看 [Pinecone 分块策略](https://www.pinecone.io/learn/chunking-strategies/) 和 [LlamaIndex 节点解析](https://docs.llamaindex.ai/en/stable/module_guides/loading/node_parsers/)，结合资料结构选择切分方式
 
-**检索要同时考虑语义、关键词和元数据**
+#### 检索要同时考虑语义、关键词和元数据
 
 向量检索需要结合 Embedding 模型选型、向量维度、归一化、Cosine / Dot Product / L2 来理解，再掌握 Top-K、相似度阈值和向量缓存
 
@@ -230,7 +230,7 @@ Rerank 则是在召回候选内容之后，进一步判断哪些片段更贴近�
 
 可以看 [Cohere Reranking](https://docs.cohere.com/docs/reranking)，学习怎样把候选片段重新排序，再选择进入生成阶段的内容
 
-**生成回答时，要让引用和拒答都有依据**
+#### 生成回答时，要让引用和拒答都有依据
 
 检索到资料后，还要决定放哪些片段、怎样排序、是否压缩，以及怎样把引用对应回原始位置
 
@@ -282,13 +282,13 @@ GraphRAG 可以看 [官方项目](https://github.com/microsoft/graphrag)，带�
 
 材料中的概念入门还可以看 [Agent 白皮书中文译文](https://arthurchiao.art/blog/ai-agent-white-paper-zh/#2-什么是-agent)，这是翻译材料，适合辅助理解
 
-**Agent Loop，先追踪一次完整任务**
+#### Agent Loop，先追踪一次完整任务
 
 Agent 的核心循环可以先记成一句话：**模型提出下一步，系统执行并返回结果，模型根据新结果继续推进，直到完成任务或触发停止条件**
 
 可以看 [Agent Loop 文档](https://code.claude.com/docs/en/agent-sdk/agent-loop)，学习模型调用、工具执行和结果反馈怎样连成循环
 
-**补充：也可以用 Pi 理解 Agent Loop 和 Harness**
+#### 补充：也可以用 Pi 理解 Agent Loop 和 Harness
 
 这里我想再补充一个工具：Pi
 
@@ -312,13 +312,13 @@ Agent 的核心循环可以先记成一句话：**模型提出下一步，系统
 
 真正动手时，再把下面这些问题逐个处理
 
-**工具设计，要把执行和错误返回都考虑进去**
+#### 工具设计，要把执行和错误返回都考虑进去
 
 工具怎样描述，参数 Schema 怎样设计，模型怎样选择工具，结果怎样组织，报错怎样返回？多个调用能否并行，超时要不要重试？
 
 可以再看 [Function Calling 文档](https://developers.openai.com/api/docs/guides/function-calling)，这一次重点关注工具描述、参数约束、调用关联和结果返回，再在应用侧补齐超时与重试
 
-**规划与任务拆解，要让每一步都有推进依据**
+#### 规划与任务拆解，要让每一步都有推进依据
 
 任务怎样拆分，有哪些依赖？执行结果与原计划不一致时，怎样重新规划？
 
@@ -328,7 +328,7 @@ Agent 的核心循环可以先记成一句话：**模型提出下一步，系统
 
 可以看 [Lilian Weng 的 Agent 文章](https://lilianweng.github.io/posts/2023-06-23-agent/) 和 [Planning Agents](https://www.langchain.com/blog/planning-agents)，学习任务拆解、规划与执行怎样配合
 
-**状态管理，要能知道任务做到了哪一步**
+#### 状态管理，要能知道任务做到了哪一步
 
 会话历史、工具记录、任务进度存在哪里？进程中断后，怎样知道已经做到了哪一步？
 
@@ -340,7 +340,7 @@ Agent 的核心循环可以先记成一句话：**模型提出下一步，系统
 
 材料还给了 [LangGraph Low-level Concepts 原入口](https://langchain-ai.github.io/langgraph/concepts/low_level/)，可沿着新版文档继续了解状态、节点和流程组织
 
-**Workflow 模式，按任务选择就好**
+#### Workflow 模式，按任务选择就好
 
 这一块包括 Prompt Chaining、Routing、Parallelization、Orchestrator-Workers 和 Evaluator-Optimizer
 
@@ -348,7 +348,7 @@ Agent 的核心循环可以先记成一句话：**模型提出下一步，系统
 
 这些模式可以在 [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents) 里逐个看，结合具体例子理解什么时候该用哪一种
 
-**记忆系统，要弄清楚存什么、什么时候再取出来**
+#### 记忆系统，要弄清楚存什么、什么时候再取出来
 
 短期记忆、长期记忆、情景记忆、语义记忆，以及记忆提取、压缩和遗忘机制，都在这部分的学习范围里
 
@@ -358,7 +358,7 @@ Agent 的核心循环可以先记成一句话：**模型提出下一步，系统
 
 可以看 [Agent Memory 学习材料](https://www.ibm.com/think/topics/ai-agent-memory) 和 [Lilian Weng 的 Memory 部分](https://lilianweng.github.io/posts/2023-06-23-agent/#component-two-memory)，理解不同记忆的作用，再考虑自己的项目需要保留什么
 
-**上下文工程，要决定这一轮给模型看什么**
+#### 上下文工程，要决定这一轮给模型看什么
 
 上下文工程涉及信息选择、裁剪、压缩、动态注入、工具结果摘要和历史消息摘要
 
@@ -366,7 +366,7 @@ Agent 的核心循环可以先记成一句话：**模型提出下一步，系统
 
 可以看 [Anthropic 的上下文工程文章](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)，学习怎样选择信息、压缩历史，以及让长任务保持连续
 
-**MCP，理解外部能力怎样接进来**
+#### MCP，理解外部能力怎样接进来
 
 MCP 要理解 Server、Client，以及 Tools、Resources、Prompts 这些能力怎样连接
 
@@ -374,7 +374,7 @@ MCP 要理解 Server、Client，以及 Tools、Resources、Prompts 这些能力�
 
 可以看 [MCP 官方入门文档](https://modelcontextprotocol.io/docs/getting-started/intro)，学习它的基本架构，以及工具、资源和提示模板怎样提供给应用
 
-**Human-in-the-Loop，给需要人工判断的操作留出节点**
+#### Human-in-the-Loop，给需要人工判断的操作留出节点
 
 Human-in-the-Loop 则涉及审批、中断、恢复和人工修正，尤其是发送消息、删除文件、变更业务数据等操作，要明确系统允许自动执行到哪一步
 
@@ -382,7 +382,7 @@ Human-in-the-Loop 则涉及审批、中断、恢复和人工修正，尤其是�
 
 材料中的 [Human-in-the-Loop 原文档入口](https://langchain-ai.github.io/langgraph/concepts/human_in_the_loop/) 也保留在这里，学习时可以与新版中断文档对照
 
-**Agent 安全，要从系统执行边界去考虑**
+#### Agent 安全，要从系统执行边界去考虑
 
 安全方面，要认识 Prompt Injection、防止工具越权、工具权限控制、沙箱执行、敏感数据保护、外部内容不可信，以及关键操作二次确认
 
@@ -390,7 +390,7 @@ Human-in-the-Loop 则涉及审批、中断、恢复和人工修正，尤其是�
 
 可以看 [OWASP Prompt Injection 防护指南](https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html)，学习外部输入、工具权限和敏感数据保护需要注意哪些边界
 
-**Agent 评估，要看任务有没有真正完成**
+#### Agent 评估，要看任务有没有真正完成
 
 评估也需要覆盖整个任务：任务完成率、工具调用准确率、步骤合理性、失败恢复能力，以及成本、延迟和多轮稳定性
 
@@ -416,7 +416,7 @@ Human-in-the-Loop 则涉及审批、中断、恢复和人工修正，尤其是�
 
 文档给出了一套 Python 后端学习路线，这里也给大家补充一下
 
-**Python Async、FastAPI 和 Pydantic**
+#### Python Async、FastAPI 和 Pydantic
 
 Async 要理解 asyncio、协程、事件循环、任务调度、并发控制、异步 I/O、超时和取消，也要分清哪些操作会阻塞，不能以为加上 async 就自动解决了性能问题
 
@@ -432,7 +432,7 @@ Pydantic 要学习类型标注、BaseModel、Field、嵌套模型、枚举、校
 
 可以看 [Pydantic 文档](https://docs.pydantic.dev/latest/)，学习怎样定义数据模型、校验输入和序列化输出
 
-**SQLAlchemy、Alembic 和 PostgreSQL**
+#### SQLAlchemy、Alembic 和 PostgreSQL
 
 学习 SQLAlchemy 2.0 的模型、关系、查询、事务、连接池和 AsyncSession，再通过 Alembic 管理数据库迁移
 
@@ -444,7 +444,7 @@ PostgreSQL 要掌握表设计、索引、事务和锁，再了解 JSONB、全文
 
 可以看 [PostgreSQL 文档](https://www.postgresql.org/docs/)，学习表、索引、事务和锁；如果用它存向量，再看 [pgvector](https://github.com/pgvector/pgvector) 的使用说明
 
-**Redis 和任务队列**
+#### Redis 和任务队列
 
 Redis 部分涉及 String、Hash、Set、ZSet、Stream、TTL、Pipeline、Lua 和 Pub/Sub，以及 RedisJSON、Vector Search 等能力
 
@@ -462,7 +462,7 @@ RabbitMQ 要了解 Producer、Consumer、Exchange、Queue、Binding、Routing Ke
 
 可以看 [RabbitMQ Tutorials](https://www.rabbitmq.com/tutorials) 和 [RabbitMQ 文档](https://www.rabbitmq.com/docs)，从消息生产、消费和确认开始，再学习路由、重试与死信处理
 
-**测试、容器化和自动化交付**
+#### 测试、容器化和自动化交付
 
 测试需要覆盖单元测试、集成测试、异步测试、Mock、Fixture、测试数据库和接口测试，包括外部模型 API、数据库或消息队列出现异常的情况
 
@@ -506,7 +506,7 @@ README 里留下架构说明、启动方式、接口示例和测试说明，让�
 
 我会从下面四个切口去看，它们之间有重叠，比如 OpenClaw 本身也属于 Personal Agent，不用把分类卡得太死
 
-**Coding Agent：Pi、Codex CLI**
+#### Coding Agent：Pi、Codex CLI
 
 这一类我会优先推荐 [Pi](https://github.com/earendil-works/pi)，再对照着看 [Codex CLI](https://github.com/openai/codex)
 
@@ -516,7 +516,7 @@ Codex CLI 则可以作为另一套实现参照，看看同样是让 Agent 读代
 
 不用一上来读完整个仓库，先沿着一个真实任务追踪执行过程，再做一个小改动，比如加一个工具或 Extension，并验证它确实改变了 Agent 的行为
 
-**Working Agent：WorkBuddy 看体验，OpenWork 读源码**
+#### Working Agent：WorkBuddy 看体验，OpenWork 读源码
 
 这一类可以先看看 [WorkBuddy](https://www.workbuddy.cn/docs/workbuddy/)，从体验的角度感知一个 Agent 是如何接到任务、执行、等待确认，再把结果交付给你的
 
@@ -526,7 +526,7 @@ OpenWork 的桌面与核心部分是 MIT 许可，但 ee/ 使用[另一份受限
 
 如果还想继续看多 Agent 协作，可以再看看 [Eigent](https://github.com/eigent-ai/eigent)，研究任务怎么拆、不同角色怎么分工，以及执行结果怎么汇总回来
 
-**OpenClaw 类常驻助手：先 nanobot，再 OpenClaw**
+#### OpenClaw 类常驻助手：先 nanobot，再 OpenClaw
 
 虽然前面吐槽了一下，但想理解这种 Agent 怎么运行，[OpenClaw](https://github.com/openclaw/openclaw) 还是可以拿来研究的，只是我不想让整条学习路线都围着它转
 
@@ -536,7 +536,7 @@ OpenWork 的桌面与核心部分是 MIT 许可，但 ee/ 使用[另一份受限
 
 这一类最好先用测试账号和非敏感文件跑，不要刚启动就把自己的主账号、个人文件和执行权限全交出去
 
-**Personal Agent：OpenBot、OpenDots**
+#### Personal Agent：OpenBot、OpenDots
 
 最近这一波 Personal Agent，可以看看 CopilotKit 的 [OpenBot](https://github.com/CopilotKit/OpenBot) 和 [OpenDots](https://github.com/CopilotKit/OpenDots)
 
